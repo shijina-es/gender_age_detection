@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age and Gender Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Age and Gender Prediction</h1>
+        <form method="post" enctype="multipart/form-data" class="upload-form">
+            <input type="file" name="file" accept="image/*" required>
+            <button type="submit">Upload and Predict</button>
+        </form>
+        
+        {% if uploaded_image %}
+        <div class="results">
+            <h2>Uploaded Image:</h2>
+            <img src="{{ uploaded_image }}" alt="Uploaded Image" class="uploaded-image">
+            <h2>Prediction Results:</h2>
+            <p><strong>Predicted Gender:</strong> {{ predicted_gender }}</p>
+            <p><strong>Predicted Age:</strong> {{ predicted_age }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
