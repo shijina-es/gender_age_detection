@@ -87,10 +87,10 @@ def get_public_ip():
 
 if __name__ == '__main__':
     #public_ip = get_public_ip()
-    #print(f"External access: http://{public_ip}:80")
+    #print(f"External access: http://{public_ip}:5000")
     if not os.path.exists(app.config['UPLOAD_FOLDER']):
         os.makedirs(app.config['UPLOAD_FOLDER'])
-    app.run(host='0.0.0.0', port=80, debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
     #app.run(debug=True)
 
 
