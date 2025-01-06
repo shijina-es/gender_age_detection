@@ -4,7 +4,6 @@ from tensorflow.keras.preprocessing.image import img_to_array
 from PIL import Image
 import numpy as np
 import os
-import subprocess
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
@@ -77,17 +76,8 @@ def index():
     
     return render_template('index.html')
 
-def get_public_ip():
-    try:
-        # Run the curl command to get public IP
-        result = subprocess.check_output(["curl", "-s", "ifconfig.me"], text=True)
-        return result.strip()
-    except subprocess.CalledProcessError as e:
-        return f"Error: {e}"
 
 if __name__ == '__main__':
-    #public_ip = get_public_ip()
-    #print(f"External access: http://{public_ip}:5000")
     if not os.path.exists(app.config['UPLOAD_FOLDER']):
         os.makedirs(app.config['UPLOAD_FOLDER'])
     app.run(host='0.0.0.0', port=5000, debug=True)
